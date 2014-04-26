@@ -1,0 +1,47 @@
+* rcirc-emote
+
+  Emoticons for rcirc (inspired by https://github.com/calebsmith/weechat-plugins/blob/master/guile/emote.scm).
+
+** Predefined emoticons
+
+   #+BEGIN_SRC lisp
+   '((":smoking:" . "(-。-)y-゜゜゜")
+    (":confused:" . "(゜-゜)")
+    (":happy:" . "(✿◠‿◠)")
+    (":surprised:" . "°o°")
+    (":infatuation:" . "(*°∀°)=3")
+    (":shrug:" . "¯\_(ツ)_/¯")
+    (":kitaa:" . "キタ━━━(゜∀゜)━━━!!!!!")
+    (":tableflip:" . "(╯°□°）╯︵ ┻━┻")
+    (":rageflip:" . "(ノಠ益ಠ)ノ彡┻━┻")
+    (":doubleflip:" . "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻")
+    (":lookofdisapproval:" . "ಠ_ಠ"))
+    #+END_SRC
+
+** Installation
+
+   Add the following to your .emacs
+   #+BEGIN_SRC lisp
+   (add-to-list 'load-path "/path/to/rcirc-emote")
+   (require 'rcirc-emote)
+   #+END_SRC
+
+** Usage
+
+   Just use an emoticon as ~:word:~ where the ~word~ should be phrase of the
+   emoticon.
+   rcirc-emote will replace phrases with their emoticons when sending the input.
+
+   For example
+   #+BEGIN_SRC text
+   > I'm a little :confused: and :surprised:
+   #+END_SRC
+
+   will be sent as
+   #+BEGIN_SRC text
+   > I'm a little (゜-゜) and °o°
+   #+END_SRC
+
+** License
+
+   MIT, see LICENSE file for more details.
