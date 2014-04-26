@@ -22,7 +22,7 @@
 
 (require 'rcirc)
 
-(defvar emoticons
+(defcustom rcirc-emoticons
   '((":smoking:" . "(-。-)y-゜゜゜")
     (":confused:" . "(゜-゜)")
     (":happy:" . "(✿◠‿◠)")
@@ -33,12 +33,15 @@
     (":tableflip:" . "(╯°□°）╯︵ ┻━┻")
     (":rageflip:" . "(ノಠ益ಠ)ノ彡┻━┻")
     (":doubleflip:" . "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻")
-    (":lookofdisapproval:" . "ಠ_ಠ")))
+    (":lookofdisapproval:" . "ಠ_ಠ"))
+  "Predefined emoticons"
+  :group 'rcirc-emote
+  :type 'sexp)
 
 ;; replace phrases with their emoticons
-(defun emoticonize (line)
+(defun rcirc-emoticonize (line)
   (let ((result line))
-    (dolist (elem emoticons result)
+    (dolist (elem rcirc-emoticons result)
       (setq result (replace-regexp-in-string (car elem) (cdr elem) result)))))
 
 ;; override rcirc-send-input to emoticonize text before sending input
@@ -67,7 +70,7 @@
       (let ((input (buffer-substring-no-properties
 		    rcirc-prompt-end-marker (point))))
 	(dolist (line (split-string input "\n"))
-	  (rcirc-process-input-line (emoticonize line)))
+	  (rcirc-process-input-line (rcirc-emoticonize line)))
 	;; add to input-ring
 	(save-excursion
 	  (ring-insert rcirc-input-ring input)
