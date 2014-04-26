@@ -29,8 +29,8 @@
 ** Usage
 
    Just use an emoticon as ~:word:~ where the ~word~ should be phrase of the
-   emoticon.
-   rcirc-emote will replace phrases with their emoticons when sending the input.
+   emoticon, and rcirc-emote will replace phrases with their emoticons when
+   sending the input.
 
    For example
    #+BEGIN_SRC text
